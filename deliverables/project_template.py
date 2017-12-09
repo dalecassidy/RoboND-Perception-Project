@@ -94,7 +94,7 @@ def pcl_callback(pcl_msg):
 
     filename = 'pass_through_filtered.pcd'
     pcl.save(cloud_filtered, filename)
-    #pcl_passthrough_pub.publish(pcl_to_ros(cloud_filtered))
+    pcl_passthrough_pub.publish(pcl_to_ros(cloud_filtered))
     # TODO: RANSAC Plane Segmentation
 
     seg = cloud_filtered.make_segmenter()
@@ -156,12 +156,12 @@ def pcl_callback(pcl_msg):
 
     # TODO: Publish ROS messages
 
-    #pcl_objects_pub.publish(ros_cloud_objects)
-    #pcl_table_pub.publish(ros_cloud_table)
-    #pcl_cluster_pub.publish(ros_cluster_cloud) 
+    pcl_objects_pub.publish(ros_cloud_objects)
+    pcl_table_pub.publish(ros_cloud_table)
+    pcl_cluster_pub.publish(ros_cluster_cloud) 
 
     #check pcl data
-    #pcl_check_pub.publish(pcl_msg)
+    pcl_check_pub.publish(pcl_msg)
 
     # Classify the clusters! (loop through each detected cluster one at a time)
     detected_objects_labels = []
@@ -256,11 +256,7 @@ def pcl_callback(pcl_msg):
 
     print(yaml_dict_list)
     yaml_filename = "output_" + str(test_scene_num.data) + ".yaml"
-    #yaml_filename = "test.yaml"
-    if (detected_objects.count > 6):
-         send_to_yaml(yaml_filename, yaml_dict_list)
-
-
+    send_to_yaml(yaml_filename, yaml_dict_list)
 
     # Suggested location for where to invoke your pr2_mover() function within pcl_callback()
     # Could add some logic to determine whether or not your object detections are robust
@@ -321,12 +317,12 @@ if __name__ == '__main__':
 
     # TODO: Create Publishers
 
-    #pcl_check_pub = rospy.Publisher("/pcl_check", PointCloud2, queue_size=1)
-    #pcl_filtered_pub = rospy.Publisher("/pcl_filter", PointCloud2, queue_size=1)
-    #pcl_passthrough_pub = rospy.Publisher("pcl_passthrough", PointCloud2, queue_size=1)
+    pcl_check_pub = rospy.Publisher("/pcl_check", PointCloud2, queue_size=1)
+    pcl_filtered_pub = rospy.Publisher("/pcl_filter", PointCloud2, queue_size=1)
+    pcl_passthrough_pub = rospy.Publisher("pcl_passthrough", PointCloud2, queue_size=1)
     pcl_objects_pub = rospy.Publisher("/pcl_objects", PointCloud2, queue_size=1)
-    #pcl_table_pub = rospy.Publisher("/pcl_table", PointCloud2, queue_size=1)
-    #pcl_cluster_pub = rospy.Publisher("/pcl_cluster", PointCloud2, queue_size=1)
+    pcl_table_pub = rospy.Publisher("/pcl_table", PointCloud2, queue_size=1)
+    pcl_cluster_pub = rospy.Publisher("/pcl_cluster", PointCloud2, queue_size=1)
     detected_objects_pub = rospy.Publisher("/detected_objects", DetectedObjectsArray, queue_size=1)
     object_markers_pub = rospy.Publisher("/object_markers", Marker, queue_size=1)
 
