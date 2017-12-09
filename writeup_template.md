@@ -8,12 +8,11 @@
 [image5]: ./images/pass_through_filtered.jpg
 [image6]: ./images/segmentation.jpg
 
-
 For this project, I implemented a perception pipeline. First I used pass through and RANSAC filtering
 on a point cloud to isolate the objects off of a table. I then applied Euclidean clustering 
 to separate individual items and then I performed object recognition using an SVM trained on 8 different items.
-Having assigned the objects labels, I calculated their centroids. I then outputted the data to yaml files 
-which describe the objects in the current test scene. 
+Having assigned the objects' labels, I calculated their centroids. I then outputted the data to yaml files 
+which describe the objects in their repsective test scenes. 
 
 The SVM was trained on all 8 objects found in pick_list_3.yaml. This was done with a camera in Gazebo
 taking several pictures of each object in several different orientations and then extracting color and normal
@@ -23,7 +22,8 @@ The following is the code I wrote for the 3 major sections of this project: filt
 the comments of the code and add supporting images along the way. At the end I discuss
 what I might have tried if I had more time to work on the project.
 
-4 files have been submitted on GitHub as part of this project: project_template.py, output_1.yaml, output_2.yaml and output_3.yaml
+4 files have been submitted on GitHub as part of this project: project_template.py, output_1.yaml, output_2.yaml and output_3.yaml. They are under
+the deliverables folder.
 
 ### Exercise 1, 2 and 3 pipeline implemented
 #### 1. Complete Exercise 1 steps. Pipeline for filtering and RANSAC plane fitting implemented.
@@ -123,7 +123,7 @@ separating the table from the objects.
 
 #### 2. Complete Exercise 2 steps: Pipeline including clustering for segmentation implemented.  
 
-This section clusters clusters and segments the objects.
+This section clusters and segments the objects.
 
 ```
     # TODO: Euclidean Clustering
@@ -357,8 +357,7 @@ I successfully calculated 100% of items (3 of 3) from `pick_list_1.yaml` for `te
 100% of items (5 of 5) from `pick_list_2.yaml` for `test2.world` and 
 75% of items (6 of 8) from `pick_list_3.yaml` in `test3.world` to meet specifications.
 
-If I had more time I would focus on figuring out how to label the back two images in test world 3
-I word work on identifying the two remaining objects in scene 3. The book and the glue were not being identified. I would
-look into why that may be. Perhaps adding another feature, looking at the way the objects were clustered and segmented may help. Also,
-if I had more time I would work on the place part of the project as well.
+If I had more time I would focus on how to label the two remaining objects in scene 3. The book and the glue were not being identified. I would
+look into why that may be. Perhaps adding another feature or looking at the way the objects were clustered and segmented may help or even
+trying a different kernel in SVM. Also, if I had more time I would work on the place part of the project as well.
 
