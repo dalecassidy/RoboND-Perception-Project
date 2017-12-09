@@ -8,6 +8,7 @@
 [image5]: ./images/pass_through_filtered.jpg
 [image6]: ./images/segmentation.jpg
 
+
 For this project, I implemented a perception pipeline. First I used pass through and RANSAC filtering
 on a point cloud to isolate the objects off of a table. I then applied Euclidean clustering 
 to separate individual items and then I performed object recognition using an SVM trained on 8 different items.
