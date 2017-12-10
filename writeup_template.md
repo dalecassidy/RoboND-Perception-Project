@@ -245,9 +245,9 @@ def compute_normal_histograms(normal_cloud):
 
     return normed_features
 ```
-The following two images are the confusion matrices generated from taking each of the 8 objects and taking 20 different
-pictures of the items in different orientations. The first one is not normalized and shows how many times of 20 
-the trained classifier accurately predicts the correct label. The second image is the same thing but just normalized
+The following two images are the confusion matrices generated from the classifier trying to accurately
+predict 20 instances of each of the 8 objects. The first one is not normalized and shows how many times of 20 
+the trained classifier accurately predicts the correct label. The second image is the same thing but normalized
 and shows the percentage of images accurately classified. The eraser is most accurately
 predicted at 90% and the snacks are least accurately predicted at 60%. Overall,
 the classification on average is 73.75% accurate. 
