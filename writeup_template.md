@@ -232,9 +232,9 @@ def compute_normal_histograms(normal_cloud):
         norm_z_vals.append(norm_component[2])
 
     # TODO: Compute histograms of normal values (just like with color)
-    norm_x_hist = np.histogram(norm_x_vals, bins=32, range=(0, 256))
-    norm_y_hist = np.histogram(norm_y_vals, bins=32, range=(0, 256))
-    norm_z_hist = np.histogram(norm_z_vals, bins=32, range=(0, 256))
+    norm_x_hist = np.histogram(norm_x_vals, bins=32, range=(-1, 1))
+    norm_y_hist = np.histogram(norm_y_vals, bins=32, range=(-1, 1))
+    norm_z_hist = np.histogram(norm_z_vals, bins=32, range=(-1, 1))
     # TODO: Concatenate and normalize the histograms
 
     hist_features = np.concatenate((norm_x_hist[0], norm_y_hist[0], norm_z_hist[0])).astype(np.float64)
@@ -249,8 +249,7 @@ The following two images are the confusion matrices generated from the classifie
 predict 20 instances of each of the 8 objects. The first one is not normalized and shows how many times of 20 
 the trained classifier accurately predicts the correct label. The second image is the same thing but normalized
 and shows the percentage of images accurately classified. The eraser is most accurately
-predicted at 90% and the snacks are least accurately predicted at 60%. Overall,
-the classification on average is 73.75% accurate. 
+predicted at 80% and the glue is least accurately predicted at 50%. 
 
 ![alt text][image7]
 
